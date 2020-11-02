@@ -82,9 +82,7 @@ void loop() {
     Serial.println();
   
     /* 
-    Enviar y escribir los datos en ThingSpeak. Se pueden tener hasta 8 campos en un
-    canal, que te permitirán almacenar hasta 8 piezas de información diferente en 
-    un canal. En este ejemplo se escribirá la información solo en el canal 1.
+    Enviar y escribir el ritmo cardiaco por minuto, en el canal 1 de ThingSpeak.
     */ 
     if (millis() > TiempoActual+periodo && checkForBeat(irValue) == true){
         TiempoActual = millis();
