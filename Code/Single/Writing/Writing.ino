@@ -1,5 +1,5 @@
 /*
-Este código envía y escribe un valor en una de las visualizaciones del canal 
+Este código envía y escribe un valor en uno de los campos o fields del canal 
 definido en "Config.h" cada 15 segundos. El fin de este código es asegurarse 
 de que hay una correcta comunicación entre la ESP y Thinkspeak para escribir
 datos.
@@ -14,11 +14,11 @@ CONSIDERACIONES IMPORTANTES
 #include "Config.h"
 #include <ESP8266WiFi.h>
 
-char ssid[] = MY_SSID; // Nombre de la red WiFi definida en Config.h
-char pass[] = MY_PASS; // Contraseña de la red WiFi definida en Config.h
-int keyIndex = 0;   // Número del índice de claves de su red (Solo necesaria 
-                    // para Redes WEP)
-WiFiClient  client; // Creación del cliente TCP
+char ssid[] = MY_SSID;  // Nombre de la red WiFi definida en Config.h
+char pass[] = MY_PASS;  // Contraseña de la red WiFi definida en Config.h
+int keyIndex = 0;       // Número del índice de claves de su red (Solo necesaria 
+                        // para Redes WEP)
+WiFiClient  client;     // Creación del cliente TCP
 
 unsigned long channelID = CH_ID;            // ID del canal definido en Config.h
 const char * writeAPIKey = WRITE_API_KEY;   // Clave de la API de escritura 
@@ -59,8 +59,10 @@ void loop() {
     un canal. En este ejemplo se escribirá la información solo en el canal 1.
     */ 
     int x = ThingSpeak.writeField(channelID, 1, num, writeAPIKey);  // La variable x se 
-    // encargará de recibir la respuesta HTTP al enviar la solicitud de escritura.
-
+                                                                    // encargará de recibir
+                                                                    // la respuesta HTTP al 
+                                                                    // enviar la solicitud 
+                                                                    // de escritura.
     if(x == 200){ // El código 200 indica un OK o éxito en la escritura.
         Serial.println("Canal actualizado correctamente.");
     }
